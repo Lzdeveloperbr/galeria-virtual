@@ -8,6 +8,7 @@ setInterval(updateDateTime, 1000); // Atualiza a cada segundo
 
 const gallery = document.getElementById('gallery');
 
+// Função para adicionar imagem
 function addImage(imageSrc, dateTime) {
     const container = document.createElement('div');
     container.classList.add('image-container');
@@ -25,10 +26,11 @@ function addImage(imageSrc, dateTime) {
     removeButton.textContent = 'Remover';
     removeButton.onclick = function() {
         gallery.removeChild(container);
+        removeImageFromStorage(imageSrc); // Remove a imagem do localStorage
     };
 
     const downloadButton = document.createElement('button');
-    downloadButton.classList.add('download-button'); // Adicionado a classe download-button
+    downloadButton.classList.add('download-button');
     downloadButton.textContent = 'Baixar';
     downloadButton.onclick = function() {
         const a = document.createElement('a');
@@ -42,11 +44,32 @@ function addImage(imageSrc, dateTime) {
     // Adicionando os elementos ao contêiner
     container.appendChild(img);
     container.appendChild(dateTimeDiv);
-    container.appendChild(downloadButton); // Botão de baixar fica acima do de remover
-    container.appendChild(removeButton); // Botão de remover abaixo do de baixar
+    container.appendChild(downloadButton);
+    container.appendChild(removeButton);
     gallery.appendChild(container);
 }
 
+// Função para armazenar a imagem no localStorage
+function saveImageToStorage(imageSrc, dateTime) {
+    let images = JSON.parse(localStorage.getItem('images')) || [];
+    images.push({ src: imageSrc, dateTime: dateTime });
+    localStorage.setItem('images', JSON.stringify(images));
+}
+
+// Função para remover a imagem do localStorage
+function removeImageFromStorage(imageSrc) {
+    let images = JSON.parse(localStorage.getItem('images')) || [];
+    images = images.filter(image => image.src !== imageSrc);
+    localStorage.setItem('images', JSON.stringify(images));
+}
+
+// Função para carregar imagens do localStorage
+function loadImagesFromStorage() {
+    const images = JSON.parse(localStorage.getItem('images')) || [];
+    images.forEach(image => addImage(image.src, image.dateTime));
+}
+
+// Função para fazer upload de imagens
 function uploadImages() {
     const files = document.getElementById('image-upload').files;
     const dateTime = new Date().toLocaleString();
@@ -57,8 +80,14 @@ function uploadImages() {
 
         reader.onload = function(e) {
             addImage(e.target.result, dateTime);
+            saveImageToStorage(e.target.result, dateTime); // Salva a imagem no localStorage
         };
 
         reader.readAsDataURL(file);
     }
 }
+
+// Carregar imagens do localStorage ao iniciar a página
+window.onload = function() {
+    loadImagesFromStorage();
+};
