@@ -1,4 +1,4 @@
-# [Galeria de Fotos 📸](https://jazzy-rolypoly-576267.netlify.app/)
+# [Galeria de Fotos 📸] (https://lzgaleriavirtual.netlify.app/)
 
 Uma aplicação web para gerenciamento de fotos, que permite fazer upload, visualizar, baixar e remover imagens de forma intuitiva.
 
