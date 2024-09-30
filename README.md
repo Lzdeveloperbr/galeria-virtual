@@ -1,4 +1,4 @@
-# Galeria de Fotos 📸
+# [Galeria de Fotos 📸](https://jazzy-rolypoly-576267.netlify.app/)
 
 Uma aplicação web para gerenciamento de fotos, que permite fazer upload, visualizar, baixar e remover imagens de forma intuitiva.
 
@@ -17,8 +17,3 @@ Uma aplicação web para gerenciamento de fotos, que permite fazer upload, visua
     <img src="https://img.icons8.com/color/48/000000/javascript.png" alt="JavaScript" width="40" height="40"/>
 </p>
 
-## Como Usar
-
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/seu_usuario/nome_do_repositorio.git
