@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria de Fotos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <h1>Minha Galeria de Fotos</h1>
+    <div id="header-info">
+        <span id="date-time"></span>
+    </div>
+</header>
+
+<main>
+    <form id="upload-form">
+        <input type="file" id="image-upload" accept="image/*" multiple>
+        <button type="button" onclick="uploadImages()">Adicionar Imagens</button>
+    </form>
+    <div class="gallery" id="gallery"></div>
+</main>
+
+<footer>
+    <p>&copy; 2024 Galeria de Fotos</p>
+</footer>
+
+<script src="script.js"></script> <!-- Link para o arquivo JavaScript -->
+</body>
+</html>
